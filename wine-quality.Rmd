@@ -6,13 +6,38 @@ output: html_notebook
 - dataset: wine quality dataset hosted on the <a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality">UCI website</a>. 
 
 load white wine dataset
-```{r}
+```{r,message=F}
 library(tidyverse)
 wine = read.csv('winequality-white.csv',,sep=';')
 head(wine)
 ```
-how the quality of wine distribute?
+how does the quality of wine distribute?
 ```{r}
 ggplot(wine,aes(quality)) + geom_histogram(binwidth = 1)+
     stat_bin(aes(y=..count.., label=..count..), geom="text", vjust=-.5,binwidth = 1) 
 ```
+Most white wines has rating of 6. distribution is quite normal with a little skew toward lower rating. 
+
+assign good (1) to rating >=7, bad(0) to rating <=6
+```{r}
+wine$quality = ifelse(wine$quality >6, 'g','b')
+ggplot(wine, aes(quality))+geom_bar()
+```
+
+train random forest model
+```{r}
+library(caret)
+set.seed(2018)
+myControl <- trainControl(
+  method = "cv",
+  number = 5,  
+  summaryFunction = twoClassSummary,
+  classProbs = TRUE, 
+  verboseIter = TRUE)
+model <- train(quality~., data=wine, method='ranger', trControl=myControl)
+
+```
+```{r}
+print(model)
+```
+
