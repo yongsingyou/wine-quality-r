@@ -1,0 +1,18 @@
+---
+title: "Wine Quality Prediction"
+output: html_notebook
+---
+- predict the quality of a wine based on the chemical properties of the wine.
+- dataset: wine quality dataset hosted on the <a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality">UCI website</a>. 
+
+load white wine dataset
+```{r}
+library(tidyverse)
+wine = read.csv('winequality-white.csv',,sep=';')
+head(wine)
+```
+how the quality of wine distribute?
+```{r}
+ggplot(wine,aes(quality)) + geom_histogram(binwidth = 1)+
+    stat_bin(aes(y=..count.., label=..count..), geom="text", vjust=-.5,binwidth = 1) 
+```
