@@ -1,3 +1,0 @@
-"0","library(tidyverse)"
-"0","wine = read.csv('winequality-white.csv',,sep=';')"
-"0","head(wine)"

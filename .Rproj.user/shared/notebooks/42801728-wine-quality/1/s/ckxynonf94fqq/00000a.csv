@@ -1,2 +1,0 @@
-"0","ggplot(wine,aes(quality)) + geom_histogram(binwidth = 1)+"
-"0","    stat_bin(aes(y=..count.., label=..count..), geom=""text"", vjust=-.5,binwidth = 1) "

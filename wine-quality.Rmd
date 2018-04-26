@@ -9,7 +9,7 @@ output: html_notebook
 load white wine dataset
 ```{r,message=F}
 library(tidyverse)
-wine = read.csv('winequality-white.csv',,sep=';')
+wine = read.csv('./data/winequality-white.csv',sep=';')
 head(wine)
 ```
 how does the quality of wine distribute?
