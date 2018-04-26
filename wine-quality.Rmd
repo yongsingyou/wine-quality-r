@@ -4,6 +4,7 @@ output: html_notebook
 ---
 - predict the quality of a wine based on the chemical properties of the wine.
 - dataset: wine quality dataset hosted on the <a href="https://archive.ics.uci.edu/ml/datasets/Wine+Quality">UCI website</a>. 
+- classify white wine rating.
 
 load white wine dataset
 ```{r,message=F}
